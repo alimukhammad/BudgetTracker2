@@ -7,14 +7,12 @@ public class BudgetTrackerUI {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter your initial balance: ");
         double initialBalance = scanner.nextDouble();
-        System.out.print("Enter your loan balance: ");
-        double loanAmount = scanner.nextDouble();
-        BudgetTracker budgetTracker = new BudgetTracker(initialBalance + loanAmount);
+        BudgetTracker budgetTracker = new BudgetTracker(initialBalance);
 
         while (true) {
             System.out.println("1. Add income");
             System.out.println("2. Add expense");
-            System.out.println("3. Add loans");
+            System.out.println("3. Add loan");
             System.out.println("4. Generate report");
             System.out.println("5. Exit");
             System.out.print("Enter your choice: ");
@@ -32,9 +30,13 @@ public class BudgetTrackerUI {
                     budgetTracker.addExpense(expense);
                     break;
                 case 3:
-                    System.out.print("Enter the amount of loans: ");
-                    double loans = scanner.nextDouble();
-                    budgetTracker.addLoan(loans);;
+                    System.out.print("Enter the loan amount: ");
+                    double loanAmount = scanner.nextDouble();
+                    System.out.print("Enter the loan interest rate: ");
+                    double loanInterestRate = scanner.nextDouble();
+                    System.out.print("Enter the loan term (months): ");
+                    int loanTerm = scanner.nextInt();
+                    budgetTracker.addLoan(loanAmount, loanInterestRate, loanTerm);
                     break;    
                 case 4:
                     budgetTracker.generateReport();
