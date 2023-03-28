@@ -9,6 +9,11 @@ public class BudgetTracker{
         balance = initialBalance;
     }
 
+    public void addLoan(double amount) {
+        loans = -loans - amount;
+        balance += amount;
+    }
+
     public void addIncome(double amount) {
         income += amount;
         balance += amount;
